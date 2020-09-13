@@ -1,0 +1,23 @@
+$text:#616161;
+$white:#fff;
+$bg:#2c3e50;
+$title:#333;
+$main: #1184F0;
+$yellow: #f7fb04;
+$contrast: darken($main, 10%);
+
+@mixin transition {
+    @for $i from 1 through 50 {
+      &:nth-child(#{$i}) {
+        transition: transform 1s #{$i * .08}s cubic-bezier(.29,1.4,.44,.96);
+      }
+    }
+  }
+  
+  @mixin alpha-attribute($attribute, $color, $background) {
+    $percent: alpha($color) * 100%;
+    $opaque: opacify($color, 1);
+    $solid-color: mix($opaque, $background, $percent);
+    #{$attribute}: $solid-color;
+    #{$attribute}: $color;
+  }
